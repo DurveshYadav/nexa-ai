@@ -29,7 +29,7 @@ class AIService:
                     for message in messages
                 ],
             )
-        
+
         except OpenAIError as exc:
             raise RuntimeError(
                 "LLM provider request failed."

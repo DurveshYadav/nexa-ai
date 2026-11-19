@@ -95,7 +95,7 @@ def test_generate_response_openai_error():
             match="LLM provider request failed.",
         ):
             ai_service.generate_response(messages)
-            
+
 # from unittest.mock import patch
 
 # from app.ai.schemas import AIMessage
@@ -166,5 +166,4 @@ def test_generate_response_openai_error():
 #     assert response.output_tokens == 8
 
 #     mock_create.assert_called_once()
-    
-    
+

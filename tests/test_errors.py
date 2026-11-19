@@ -139,4 +139,3 @@ def test_generic_nexai_error_handler():
     assert data["error"]["message"] == (
         "Something went wrong."
     )
-    

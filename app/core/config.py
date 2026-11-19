@@ -45,7 +45,7 @@ class Settings(BaseSettings):
 
     # Database configuration
     database_url: str
-    
+
     # ---------------------------------------------------------
     # Environment / .env configuration
     # ---------------------------------------------------------

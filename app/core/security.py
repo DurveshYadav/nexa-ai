@@ -46,6 +46,5 @@ def create_access_token(
         settings.jwt_secret_key,
         algorithm=settings.jwt_algorithm,
     )
-    
-    
-    
+
+

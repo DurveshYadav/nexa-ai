@@ -43,4 +43,3 @@ class MessageHistoryResponse(BaseModel):
     items: list[MessageResponse]
     skip: int
     limit: int
-    

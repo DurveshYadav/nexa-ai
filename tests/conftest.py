@@ -1,4 +1,5 @@
 import os
+import uuid
 
 
 TEST_DATABASE_URL = os.getenv(
@@ -13,6 +14,7 @@ os.environ["DATABASE_URL"] = TEST_DATABASE_URL
 
 os.environ["OPENAI_API_KEY"] = "test-key"
 os.environ["OPENAI_MODEL"] = "test-model"
+os.environ["JWT_SECRET_KEY"] = "test-secret-key-for-local-testing-only"
 
 import pytest
 from fastapi.testclient import TestClient
@@ -87,12 +89,30 @@ def test_user(client):
 
     return response.json()
 
+# @pytest.fixture()
+# def auth_headers(client, test_user):
+#     response = client.post(
+#         "/api/v1/auth/login",
+#         data={
+#             "username": test_user["email"],
+#             "password": "TestPassword123!",
+#         },
+#     )
+
+#     assert response.status_code == 200
+
+#     token = response.json()["access_token"]
+
+#     return {
+#         "Authorization": f"Bearer {token}"
+#     }
+
 @pytest.fixture()
 def auth_headers(client, test_user):
     response = client.post(
         "/api/v1/auth/login",
-        data={
-            "username": test_user["email"],
+        json={
+            "email": test_user["email"],
             "password": "TestPassword123!",
         },
     )

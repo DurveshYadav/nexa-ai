@@ -7,7 +7,8 @@ from sqlalchemy.orm import Session
 import jwt
 
 from app.core.config import settings
-from app.database.session import SessionLocal
+# from app.database.session import SessionLocal
+from app.database.session import get_db
 from app.repositories.user_repository import user_repository
 
 
@@ -16,13 +17,13 @@ oauth2_scheme = OAuth2PasswordBearer(
 )
 
 
-def get_db() -> Generator[Session, None, None]:
-    db = SessionLocal()
+# def get_db() -> Generator[Session, None, None]:
+#     db = SessionLocal()
 
-    try:
-        yield db
-    finally:
-        db.close()
+#     try:
+#         yield db
+#     finally:
+#         db.close()
 
 
 def get_request_id(
