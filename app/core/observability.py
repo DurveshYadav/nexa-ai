@@ -13,4 +13,3 @@ def configure_logging() -> None:
             "%(name)s %(message)s"
         ),
     )
-    

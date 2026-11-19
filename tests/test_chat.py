@@ -222,4 +222,3 @@ def test_send_message_requires_authentication():
     )
 
     assert response.status_code == 401
-    

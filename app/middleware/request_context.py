@@ -49,4 +49,3 @@ class RequestContextMiddleware(BaseHTTPMiddleware):
         )
 
         return response
-    

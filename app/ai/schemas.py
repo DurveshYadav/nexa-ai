@@ -11,5 +11,4 @@ class AIResponse(BaseModel):
     model: str
     input_tokens: int | None = None
     output_tokens: int | None = None
-    
-    
+

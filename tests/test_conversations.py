@@ -267,4 +267,3 @@ def test_user_cannot_access_other_users_conversation():
     assert data["error"]["code"] == "RESOURCE_NOT_FOUND"
     assert data["error"]["message"] == "Conversation not found"
 
-    

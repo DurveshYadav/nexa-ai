@@ -54,4 +54,3 @@ def send_message(
         conversation=conversation,
         content=request.content,
     )
-    

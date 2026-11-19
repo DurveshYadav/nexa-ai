@@ -31,7 +31,7 @@ class MessageRepository:
         db.refresh(message)
 
         return message
-    
+
 
     def get_recent(
         self,
@@ -76,4 +76,3 @@ class MessageRepository:
         )
 
         return list(db.scalars(statement).all())
-        

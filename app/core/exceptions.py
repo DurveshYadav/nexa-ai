@@ -77,4 +77,3 @@ class DatabaseError(NexaAIException):
             code="DATABASE_ERROR",
         )
 
-        

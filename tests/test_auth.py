@@ -106,8 +106,8 @@ def test_protected_conversation():
     data = response.json()
 
     assert data["title"] == "Protected Conversation"
-    
-    
+
+
 
 def test_get_conversation():
     email = unique_email("get")
@@ -195,4 +195,3 @@ def test_get_nonexistent_conversation():
     assert data["error"]["message"] == "Conversation not found"
 
 
-    
