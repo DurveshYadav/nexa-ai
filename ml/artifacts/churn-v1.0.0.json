@@ -1,0 +1,31 @@
+{
+  "model_name": "Decision Tree",
+  "model_version": "churn-v1.0.0",
+  "created_at_utc": "2026-10-25T20:11:44.176097+00:00",
+  "target": "churn",
+  "classes": [
+    0,
+    1
+  ],
+  "training_rows": 5000,
+  "feature_columns": [
+    "customer_age",
+    "tenure",
+    "monthly_spend",
+    "contract_type",
+    "support_tickets",
+    "usage_frequency",
+    "payment_method"
+  ],
+  "model_parameters": {
+    "class_weight": "balanced",
+    "max_depth": 3,
+    "min_samples_leaf": 10
+  },
+  "dataset_sha256": "bdfc909bad07ddff90c30d5bcdabf7f771075dcd9c7d89869c9584778cd8af1f",
+  "artifact_sha256": "8445af2b77b545c72eb11b6284950b8e3a400e538c1db693c49c6429d4da96d2",
+  "python_version": "3.12.3",
+  "pandas_version": "3.0.6",
+  "scikit_learn_version": "1.9.1",
+  "joblib_version": "1.6.0"
+}
