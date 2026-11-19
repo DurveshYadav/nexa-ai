@@ -1,0 +1,59 @@
+services:
+
+  postgres:
+    image: postgres:17
+
+    container_name: nexaai-postgres
+
+    restart: unless-stopped
+
+    environment:
+      POSTGRES_DB: nexaai
+      POSTGRES_USER: nexaai_user
+      POSTGRES_PASSWORD: nexaai@123
+
+    ports:
+      - "5433:5432"
+
+    volumes:
+      - nexaai_postgres_data:/var/lib/postgresql/data
+
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready -U nexaai_user -d nexaai"
+        ]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    container_name: nexaai-api
+
+    restart: unless-stopped
+
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+    environment:
+      DATABASE_URL: postgresql+psycopg://nexaai_user:nexaai%40123@postgres:5432/nexaai
+
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      OPENAI_MODEL: ${OPENAI_MODEL:-gpt-4o-mini}
+      JWT_SECRET_KEY: ${JWT_SECRET_KEY}
+      CHAT_CONTEXT_MESSAGES: ${CHAT_CONTEXT_MESSAGES:-20}
+
+    ports:
+      - "${API_PORT:-8000}:8000"
+
+
+volumes:
+  nexaai_postgres_data:
+
