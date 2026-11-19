@@ -9,11 +9,14 @@ from app.api.v1.router import api_router
 from app.core.config import settings
 from app.core.logging import setup_logging
 from fastapi.middleware.cors import CORSMiddleware
+from app.api.v2.router import api_v2_router
+from app.core.observability import configure_logging
+from app.middleware.request_context import RequestContextMiddleware
 
 
 logger = logging.getLogger(__name__)
 setup_logging()
-
+configure_logging()
 
 app = FastAPI(
     title=settings.app_name,
@@ -37,6 +40,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+app.add_middleware(RequestContextMiddleware)
 # @app.middleware("http")
 # async def log_request_time(
 #     request: Request,
@@ -132,7 +136,7 @@ async def log_request_time(
 
 # Register API routes.
 app.include_router(api_router)
-
+app.include_router(api_v2_router)
 
 @app.get("/", tags=["Root"])
 def root():

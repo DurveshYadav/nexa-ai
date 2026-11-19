@@ -7,11 +7,16 @@ ENV PYTHONUNBUFFERED=1
 
 COPY requirements-2.txt .
 
-RUN pip install --no-cache-dir -r requirements-2.txt
+RUN pip install \
+    --no-cache-dir \
+    --default-timeout=180 \
+    --retries=5 \
+    -r requirements-2.txt
 
 COPY app ./app
 COPY alembic.ini .
 COPY alembic ./alembic
+COPY ml ./ml
 
 EXPOSE 8000
 
