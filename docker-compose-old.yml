@@ -1,0 +1,25 @@
+services:
+
+  postgres:
+    image: postgres:17
+
+    container_name: nexaai-postgres
+
+    restart: unless-stopped
+
+    environment:
+      POSTGRES_DB: nexaai
+      POSTGRES_USER: nexaai_user
+      POSTGRES_PASSWORD: nexaai@123
+
+    ports:
+      # Host:Container
+      - "5433:5432"
+
+    volumes:
+      # PostgreSQL data survives container recreation
+      - nexaai_postgres_data:/var/lib/postgresql/data
+
+volumes:
+  nexaai_postgres_data:
+
